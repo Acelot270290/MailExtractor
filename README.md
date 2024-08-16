@@ -21,14 +21,19 @@ This is a Laravel-based API for processing email content, extracting plain text 
 git clone https://github.com/your-username/email-processing-api.git
 cd email-processing-api
 ```
+### 2. Up Docker
 
-### 2. Install Dependencies
+```bash
+docker-compose up -d
+```
+
+### 3. Install Dependencies
 
 ```bash
 composer install
 ```
 
-### 3. Set Up Environment Variables
+### 4. Set Up Environment Variables
 
 - Copy the example environment file to create your `.env` file:
 
@@ -38,25 +43,25 @@ cp .env.example .env
 
 - Update the `.env` file with your database and JWT configuration.
 
-### 4. Generate Application Key
+### 5. Generate Application Key
 
 ```bash
 php artisan key:generate
 ```
 
-### 5. Generate JWT Secret
+### 6. Generate JWT Secret
 
 ```bash
 php artisan jwt:secret
 ```
 
-### 6. Run Migrations
+### 7. Run Migrations
 
 ```bash
 php artisan migrate
 ```
 
-### 7. Seed the Database
+### 8. Seed the Database
 
 You can seed the database with an admin user using the following command:
 
@@ -64,7 +69,7 @@ You can seed the database with an admin user using the following command:
 php artisan db:seed --class=AdminSeeder
 ```
 
-### 8. Run the Application
+### 9. Run the Application
 
 You can serve the application locally using:
 
@@ -73,6 +78,32 @@ php artisan serve
 ```
 
 The API will be available at `http://localhost:8000` or the port specified.
+
+### 10. Running with Docker
+
+If you prefer to use Docker, follow these steps:
+
+1. **Build the Docker containers:**
+
+   ```bash
+   docker-compose up --build
+   ```
+
+2. **Run migrations inside the Docker container:**
+
+   ```bash
+   docker-compose exec app php artisan migrate
+   ```
+
+3. **Seed the database:**
+
+   ```bash
+   docker-compose exec app php artisan db:seed --class=AdminSeeder
+   ```
+
+4. **Access the application:**
+
+   The application will be accessible at `http://localhost:85` or the port specified in your Docker configuration.
 
 ## API Endpoints
 
